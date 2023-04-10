@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        % xlabel = $x$,
+        % ylabel = $\sigmoid{x}$,
+        ymin = -0.025,ymax = 0.275,
+        domain = -6:6,
+        grid=both,
+        % width=5.5cm,
+        smooth,
+        axis lines = left,
+    ]
+  
+    \addplot[color=black,domain=-5:5,thick]{exp(-x)/(1+exp(-x))^(2)} node[pos=0.7,anchor=west]{$\sigma ' (x)$};
+    %   \addplot[color=blue]{tanh(x)};
+    %   \addplot[color=blue,dashed,domain=-1:1,thin]{x};
+        % \legend{$\sigmoid{x}$}
+    \end{axis}
+    % \draw (0,-1) node [inner sep=0.75pt]{
+    %   $\sigmoid{x} =\frac{1}{1+e^{-x}}$
+    % };
+\end{tikzpicture}

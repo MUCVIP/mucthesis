@@ -1,0 +1,23 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        % xlabel = $x$,
+        % ylabel = $\tanh{x}$,
+        ymin = -0.4,ymax = 4.4,
+        domain = -5:5,
+        grid=both,
+        % width=5.5cm,
+        smooth,
+        axis lines = left,
+    ]
+    
+    \def\softplus{ln(1+e^x)}
+    \def\halfmish{(1-exp(-2*(\softplus)))/(1+exp(-2*(\softplus)))}
+    % \addplot[domain=1:5]{ln(x)};
+    \addplot[color=black,domain=-5:5,thick]{x*\halfmish} node[pos=0.8,anchor=south east]{Mish$(x)$};
+    %   \addplot[color=blue]{tanh(x)};
+    %   \addplot[color=blue,dashed,domain=-1:1,thin]{x};
+    \end{axis}
+    % \draw (0,-1) node [inner sep=0.75pt]{
+    %   $\sigmoid{x} =\frac{1}{1+e^{-x}}$
+    % };
+\end{tikzpicture}

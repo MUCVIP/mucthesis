@@ -1,0 +1,12 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        ymin = -0.1,ymax = 1.1,
+        domain = -6:6,
+        grid=both,
+        smooth,
+        axis lines = left,
+    ]
+  
+    \addplot[color=black,domain=-5:5,thick]{(1+exp(-x) + x*exp(-x))/(1+exp(-x))^2} node[pos=0.6,anchor=east]{SiLU$'(x)$};
+    \end{axis}
+\end{tikzpicture}

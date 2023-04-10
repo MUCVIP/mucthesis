@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        % xlabel = $x$,
+        % ylabel = $ReLU\left(x\right)$,
+        ymin = -0.2,ymax = 2.2,
+        domain = -5:5,
+        grid=both,
+        % width=5.5cm,
+        smooth,
+        axis lines = left,
+    ]
+
+    \def\a{0.1}
+    \addplot[color=black,domain=-2:0,thick]{\a*x};
+    \addplot[color=black,domain=0:2,thick]{x} node[pos=0.85,anchor=east]{LeakyReLU$(x)$};
+    %   \addplot[color=blue]{tanh(x)};
+    %   \addplot[color=blue,dashed,domain=-1:1,thin]{x};
+    \end{axis}
+    % \draw (0,-1) node [inner sep=0.75pt]{
+    %   $\sigmoid{x} =\frac{1}{1+e^{-x}}$
+    % };
+\end{tikzpicture}

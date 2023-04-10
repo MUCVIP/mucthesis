@@ -1,0 +1,17 @@
+\begin{tikzpicture}
+    \begin{axis}[
+        % xlabel = $x$,
+        % ylabel = $ReLU\left(x\right)$,
+        ymin = -0.1,ymax = 1.1,
+        domain = -5:5,
+        grid=both,
+        % width=5.5cm,
+        smooth,
+        axis lines = left,
+    ]
+  
+    \addplot[color=black,domain=-2:0,thick]{0};
+    \addplot[color=black,domain=0:2,thick]{1};
+    \addplot[color=black,domain=-0.001:0.001,thick]{500*x+0.5} node[pos=0.85,anchor=west]{ReLU$'(x)$};
+    \end{axis}
+\end{tikzpicture}

@@ -1,0 +1,247 @@
+\documentclass[UTF8,a4paper,12bp]{ctexbook}
+
+% \usepackage{ctex}
+\usepackage{amsthm,amsmath,amssymb} % 数学符号
+\usepackage{mathrsfs}   % 数学符号
+\usepackage{newclude}
+
+\usepackage{graphicx}   % 插入图片
+\usepackage{subfigure}
+\usepackage{booktabs,multirow}   % 表格工具
+\usepackage{listings,xcolor}    % 代码环境，颜色
+\usepackage{fontspec}   % 字体设置
+
+\usepackage{geometry}   % 纸张设置
+
+\usepackage{gbt7714}    % GB7714-2015风格的参考文献
+\bibliographystyle{gbt7714-numerical}
+
+\usepackage{tikz}
+\usepackage{newclude}
+\usepackage{makecell}
+\usepackage{pgfplots}
+\usepackage{rotfloat}
+\usepackage[final]{pdfpages}
+\pgfplotsset{compat=newest}
+
+
+%%%%%%%%%%%%%%%
+% 双语摘要
+\newcommand{\enabstractname}{Abstract}
+\newcommand{\cnabstractname}{摘~要}
+\newenvironment{enabstract}{%
+  \par\small
+  \noindent\mbox{}\hfill{\bfseries \zihao{3} \enabstractname}\hfill\mbox{}\par
+  \vskip 32bp}{\par\vskip 2.5ex}
+\newenvironment{cnabstract}{%
+  \par\small
+  \noindent\mbox{}\hfill{\heiti \zihao{3} \cnabstractname}\hfill\mbox{}\par
+  \vskip 32bp}{\par\vskip 2.5ex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\tocleadinglinesymbol}{$\cdot$}
+\newcommand{\tocleadingline}{\titlerule*[0.4pc]{\tocleadinglinesymbol}}
+\newcommand{\toctextformat}{\songti \zihao{4} \linespread{1.3}}
+
+\usepackage{titletoc}
+\titlecontents{chapter}[4em]
+{\toctextformat}
+{\contentslabel{4em}}
+{\hspace*{-4em}}
+{~\tocleadingline \contentspage}
+
+\titlecontents{section}[5em]
+{\toctextformat}
+{\contentslabel{4em}}
+{\hspace*{-4em}}
+{~\tocleadingline \contentspage}
+
+\titlecontents{subsection}[5em]
+{\toctextformat}
+{\contentslabel{2em}}
+{\hspace*{-2em}}
+{~\tocleadingline \contentspage}
+
+\titlecontents{subsubsection}[6em]
+{\toctextformat}
+{\contentslabel{3em}}
+{\hspace*{-2em}}
+{~\tocleadingline \contentspage}
+
+\renewcommand{\contentsname}{\heiti \zihao{3} \vspace{28pt} 目~录}
+
+\geometry{
+    left=2.7cm,
+    right=2.2cm,
+    top=2.5cm,
+    bottom=2.5cm
+}
+
+\lstset{    % 代码环境设置
+    %行号
+    numbers=left,
+    %背景框
+    framexleftmargin=10mm,
+    frame=none,
+    %背景色
+    %backgroundcolor=\color[rgb]{1,1,0.76},
+    backgroundcolor=\color[RGB]{245,245,244},
+    %样式
+    basicstyle=\fontspec{Consolas},
+    keywordstyle={
+        \fontspec{Consolas Bold}
+        \color{blue}
+    },
+    identifierstyle=\fontspec{Consolas},
+    numberstyle=\color[RGB]{0,192,192},
+    commentstyle={
+        \fontspec{Consolas Italic}
+        \color[RGB]{0,96,96}
+    },
+    stringstyle={
+        %\fontspec{Consolas}
+        \slshape
+        \color[RGB]{128,0,0}
+    },
+    %显示空格
+    showstringspaces=false
+}
+
+\ctexset{
+    chapter = {
+        name={第,章\hspace*{-0.5\ccwd}}, number={\chinese{chapter}},
+        nameformat={\heiti\zihao{3}},
+        format={\centering\sffamily},
+        titleformat={\heiti \zihao {3}},
+        numberformat={\heiti \zihao {3}},
+        beforeskip={-10pt},afterskip={32pt},
+        runin={true}
+    },
+    section = {
+        name={第,节\hspace*{-0.25\ccwd}},
+        indent={2\ccwd},
+        number={\chinese{section}},
+        format={\flushleft \sffamily \heiti \zihao {4} \linespread{1.5}},
+        beforeskip={14pt},afterskip={28pt},
+        fixskip=true,
+    },
+    subsection = {
+        name={,、\hspace*{-1\ccwd}},
+        indent={2\ccwd},
+        number={\chinese{subsection}},
+        format={\flushleft \sffamily \heiti \zihao {-4}},
+        beforeskip={28pt},afterskip={28pt},
+        fixskip=true,
+    },
+    paragraph = {
+        indent={2\ccwd},
+        format={\flushleft \sffamily \songti \zihao{-4} \linespread{1.2}},
+        beforeskip={-10pt},afterskip={-10pt},
+    },
+    subsubsection = {
+        indent={2\ccwd},
+        format={\flushleft \sffamily \songti \zihao{-4} \linespread{1.2}},
+        beforeskip={12pt},afterskip={12pt},
+        fixskip=true,
+    },
+    % subparagraph = {
+    %     name={（,）},
+    %     number={\arabic{subparagraph}},
+    %     indent={2\ccwd},
+    %     format={\flushleft \sffamily \songti \zihao{-4}},
+    % },
+}
+\usepackage{setspace}
+% \onehalfspacing
+\linespread{2}  % 行距设置
+\setlength{\parskip}{0em}
+
+%%% 定一了一个给段落编号的宏和计数器
+%%% 使用前，需将计数器重置\setcounter{paranum}{0}
+%%% 使用时，在段前调用宏\parwithnum
+\newcounter{paranum}
+\newcommand{\parwithnum}{（\refstepcounter{paranum}\theparanum）}
+
+
+%%%%%%%%%%%%%
+\title{基于中央民族大学学位论文格式要求的\LaTeX模板}
+\author{\kaishu{民大某学生}}
+\date{\today}
+%%%%%%%%%%%%
+
+\begin{document}
+    \begin{titlepage}
+        % 封面
+        % \maketitle
+        \includepdf{chapters/titlepage.pdf}
+    \end{titlepage}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \pagestyle{plain}
+    \pagenumbering{Roman}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \include{chapters/cnabstract}
+    % \begin{cnabstract}
+    %     摘要正文
+    %     \par\textbf{关键字: } 关键字1；关键字2；关键字3
+    %     %“\par在段首，表示另起一行，“\textbf{}”,花括号内的内容加粗显示
+    % \end{cnabstract}\addcontentsline{toc}{chapter}{\cnabstractname}
+    
+    % \newpage
+    \include{chapters/enabstract}
+    % \begin{enabstract}
+    %     English abstract
+    % \par\textbf{Keywords:} keyword1; keyword2; keyword3
+    % %“\par在段首，表示另起一行，“\textbf{}”,花括号内的内容加粗显示
+    % \end{enabstract}\addcontentsline{toc}{chapter}{\enabstractname}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \tableofcontents
+
+    \renewcommand{\listfigurename}{插图目录}
+    \listoffigures
+
+    \renewcommand{\listtablename}{表格目录}
+    \listoftables
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \chapter{绪论}
+    \pagenumbering{arabic}
+    \setcounter{page}{1}
+    \include*{chapters/introduction}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \chapter{数学公式}
+    \include*{chapters/math-shit}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \chapter{图文混排}
+    \include*{chapters/figure}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \chapter{表格}
+    \include*{chapters/table}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \chapter{总结与展望}
+    \include*{chapters/conclusion}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \bibliography{chapters/reference}\addcontentsline{toc}{chapter}{参考文献}
+
+
+
+    \chapter*{致谢}\addcontentsline{toc}{chapter}{致谢}
+    \include*{chapters/thankyou}
+
+\end{document}

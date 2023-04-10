@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 可以自己定义常用的宏
+\newcommand{\sigmoid}[1]{\sigma\left(#1\right)}
+\newcommand{\gatefunction}[1]{\sigmoid{W_{x#1}\,x_t + W_{h#1}\,h_{t-1} + b_{#1}}}
+\newcommand{\mat}[1]{\mathbf{#1}}
+%%%%%%%%%%%%%%%%%%%%%
+
+\section{引言}
+
+本章演示如何插入公式并且创建标签进行交叉引用。
+
+\section{简单方程}
+
+\subsection{神经元模型}
+
+神经网络是由具有适应性的简单单元组成的广泛并行互连的网络，它的组织能够模拟生物神经系统对真实世界物体所做出的交互反应。% 西瓜书P97
+其基本单元为神经元，神经元的数学模型可用式\ref{neural:cell}描述。
+
+\begin{equation}
+    y = f \left( \sum_{i=1}^n w_i x_i - b \right)
+    \label{neural:cell}
+\end{equation}
+
+\noindent 其中\(y\)表示神经元的输出，\(x_i\)表示输入，\(w_i\)表示对应输入的权重，\(b \)表示阈值，函数\(f\)表示激活函数。
+
+\subsection{多行方程一并编号带花括号}
+
+\begin{equation}
+    \left\{
+        \begin{aligned}
+            \theta_j &= f_{\theta j} \left(\sum_{i}v_{ji} \cdot x_i - \mu_j \right) \\
+            y_k &= f_{yk}  \left(\sum_{j}w_{kj} \cdot \theta_i - \lambda_k \right)
+        \end{aligned} 
+    \right.
+    \label{neural:multi_layers}
+\end{equation}
+
+\begin{equation}
+    \left.
+    \begin{aligned}
+        G_i & \leftarrow G_i + \left[\frac{\partial}{\partial \theta_i} J\left(
+            \theta_0, \theta_i, \cdots, \theta_n
+        \right)\right]^2 \\
+        \theta_i & \leftarrow \theta_i - \frac{\varepsilon}{\sqrt{G_i} + \epsilon} \frac{\partial}{\partial \theta_i} J\left(
+            \theta_0, \theta_i, \cdots, \theta_n
+        \right)
+    \end{aligned}
+    \right\}
+    \label{adagrad:defination}
+\end{equation}
+
+
+
+\subsection{多行方程等号对齐}
+
+\begin{align}
+    \sigmoid{x} &= \frac{1}{1+e^{-x}} \label{acti:sigmoid} \\
+    \tanh \left(x\right) &= \frac{1-e^{-2x}}{1+e^{-2x}} \label{acti:tanh} \\
+    \text{ReLU}(x) &= \text{max}(0, x) \label{acti:relu} \\
+    \text{LeakyReLU}(x) &= \text{max}(\alpha x, x) \label{acti:leaky_relu} \\
+    \text{SiLU} &= x \; \sigmoid{x} \label{acti:silu} \\
+    \text{Mish}(x) &=  \tanh \left(\ln \left(1+e^x\right) \right) \label{acti:mish}  
+\end{align}
+
+\section{矩阵}
+
+\subsection{大型矩阵}
+
+\begin{equation}
+    \mat{A}=
+    \left(
+        \begin{matrix}
+            a_{0,0} & a_{0,1} & a_{0,2} & \cdots & a_{0,n} \\
+            a_{1,0} & a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+            a_{2,0} & a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            a_{m,0} & a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+        \end{matrix}
+    \right), \mat{B}=
+    \left(
+        \begin{matrix}
+             & b_{-1,-1} & b_{-1,0} & b_{-1,1} \\
+             & b_{0,-1} & b_{0,0} & b_{0,1} \\
+             & b_{1,-1} & b_{1,0} & b_{1,1}
+        \end{matrix}
+    \right)
+\end{equation}
+
+\begin{equation}
+    \mat{X} = \left(
+        \begin{matrix}
+            x_1 \\
+            x_2 \\
+            \vdots \\
+            x_i \\
+            -1
+        \end{matrix}
+    \right),\; 
+    \mat{Y} = \left(
+        \begin{matrix}
+            y_1 \\
+            y_2 \\
+            \vdots \\
+            y_{j-1} \\
+            y_j
+        \end{matrix}
+    \right),\;\mat{W}=
+    \left(
+        \begin{matrix}
+            w_{1,1} & w_{1,2} & w_{1,3} & \cdots & w_{1,i} \\
+            w_{2,1} & w_{2,2} & w_{2,3} & \cdots & w_{2,i} \\
+            w_{3,1} & w_{3,2} & w_{3,3} & \cdots & w_{3,i} \\
+            \vdots  & \vdots  & \vdots  & \ddots & \vdots  \\
+            w_{j,1} & w_{j,2} & w_{j,3} & \cdots & w_{j,i} 
+        \end{matrix}
+    \right. \left|
+        \begin{matrix}
+            b_1 \\
+            b_2 \\
+            b_3 \\
+            \vdots \\
+            b_j
+        \end{matrix}
+    \right)
+    \label{fc:clarify}
+\end{equation}
+

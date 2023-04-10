@@ -1,0 +1,19 @@
+\begin{tikzpicture}
+    \begin{axis}[
+            ymin = -0.1,ymax = 1.1,
+            domain = -6:6,
+            grid=both,
+            smooth,
+            axis lines = left,
+        ]
+
+        \def\softplus{ln(1+e^x)}
+        \def\halfmish{(1-exp(-2*(\softplus)))/(1+exp(-2*(\softplus)))}
+        \def\dsoftplus{(1+exp(-x))^(-1)}
+        \def\dhalfmish{\dsoftplus * (4*exp(-2*(\softplus))/(1+exp(-2*(\softplus)))^2)}
+
+        \addplot[color=black,domain=-5:5,thick]{x*\dhalfmish + \halfmish} node[pos=0.55,anchor=west]{Mish$'(x)$};
+
+    \end{axis}
+
+\end{tikzpicture}

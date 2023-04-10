@@ -1,0 +1,26 @@
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\section{引言}
+
+本章演示如何插入表格并设置标题。
+
+\section{表格实例}
+
+网络参数如表\ref{tab:cctv:netconfig}所示。
+
+\begin{table}[h]
+    \centering
+    \caption{监控系统子网网络参数}
+    % \begin{tabular}{p{0.2\linewidth}p{0.2\linewidth}p{0.2\linewidth}p{0.2\linewidth}}
+    \begin{tabular}{c|c|c|c}
+        % \toprule
+        \hline
+        IPv4    & 子网掩码  & 默认网关  & DHCP池    \\
+        \hline
+        192.168.61.0 & 255.255.255.0 & 192.168.61.1 & 192.168.61.100-200 \\
+        \hline
+        % \bottomrule
+    \end{tabular}
+    \label{tab:cctv:netconfig}
+\end{table}
