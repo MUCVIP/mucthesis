@@ -34,3 +34,7 @@
 
 调用`gbt7714`宏包在文末自动插入的参考格式符合[GB/T 7714-2015](https://baike.baidu.com/item/%E4%BF%A1%E6%81%AF%E4%B8%8E%E6%96%87%E7%8C%AE%E2%80%94%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E8%91%97%E5%BD%95%E8%A7%84%E5%88%99/57092464)
 之规定
+
+## LICENSE
+
+[LaTeX Project Public License v1.3c](https://choosealicense.com/licenses/lppl-1.3c/)
