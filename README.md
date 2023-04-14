@@ -12,11 +12,13 @@
 | `images` | 目录 | 图片存放目录 |
 <!-- | `-` |  |  | -->
 
-## 正文
+## 使用方法
+
+### 如何修改正文
 
 正文中各种宏的调用参看`chapter`目录下的文件。
 
-## 封面
+### 如何插入封面
 
 使用目录`format-reference`下的文件编辑并生成pdf格式的封面  
 可以使用Microsoft print to pdf工具将word文件打印到pdf文件  
@@ -25,7 +27,7 @@
 封面文件保存到`chapters/titlepage.pdf`  
 编译文档时即可插入封面
 
-## 参考文献
+### 如何插入参考文献
 
 参考文献全部插入到`chapters/reference.bib`中  
 该文件参考格式位BigTex，各文献平台都支持输出该格式的参考
