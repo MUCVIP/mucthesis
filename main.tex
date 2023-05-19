@@ -24,6 +24,7 @@
 \usepackage[final]{pdfpages}
 \pgfplotsset{compat=newest}
 
+\usepackage{hyperref}   % 添加PDF超链接方便跳转
 
 %%%%%%%%%%%%%%%
 % 双语摘要
@@ -50,21 +51,21 @@
 {\hspace*{-4em}}
 {~\tocleadingline \contentspage}
 
-\titlecontents{section}[5em]
+\titlecontents{section}[4em]
 {\toctextformat}
-{\contentslabel{4em}}
+{\contentslabel{2em}}
 {\hspace*{-4em}}
 {~\tocleadingline \contentspage}
 
-\titlecontents{subsection}[5em]
+\titlecontents{subsection}[8em]
 {\toctextformat}
-{\contentslabel{2em}}
+{\contentslabel{3em}}
 {\hspace*{-2em}}
 {~\tocleadingline \contentspage}
 
 \titlecontents{subsubsection}[6em]
 {\toctextformat}
-{\contentslabel{3em}}
+{\contentslabel{2em}}
 {\hspace*{-2em}}
 {~\tocleadingline \contentspage}
 
@@ -118,17 +119,17 @@
         runin={true}
     },
     section = {
-        name={第,节\hspace*{-0.25\ccwd}},
-        indent={2\ccwd},
-        number={\chinese{section}},
+        % name={第,节\hspace*{-0.25\ccwd}},
+        % indent={2\ccwd},
+        number={\arabic{chapter}.\arabic{section}},
         format={\flushleft \sffamily \heiti \zihao {4} \linespread{1.5}},
         beforeskip={14pt},afterskip={28pt},
         fixskip=true,
     },
     subsection = {
-        name={,、\hspace*{-1\ccwd}},
-        indent={2\ccwd},
-        number={\chinese{subsection}},
+        % name={,、\hspace*{-1\ccwd}},
+        % indent={2\ccwd},
+        number={\arabic{chapter}.\arabic{section}.\arabic{subsection}},
         format={\flushleft \sffamily \heiti \zihao {-4}},
         beforeskip={28pt},afterskip={28pt},
         fixskip=true,
